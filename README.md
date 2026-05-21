@@ -2,6 +2,8 @@
 
 A [Raycast](https://raycast.com) extension to parse, inspect, and edit URL components — auto-reads from clipboard, live preview, copy result.
 
+![URL Parser screenshot](assets/screenshot.png)
+
 ## Features
 
 - **Auto-clipboard detection** — opens with the URL already populated if your clipboard contains one
