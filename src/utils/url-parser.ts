@@ -44,6 +44,8 @@ export function serialize(parsed: ParsedUrl): string {
   const normalizedPath = parsed.pathname || "/";
   const queryString = searchParams.toString();
   const search = queryString ? `?${queryString}` : "";
-  const normalizedProtocol = parsed.protocol.endsWith(":") ? parsed.protocol : `${parsed.protocol}:`;
+  const normalizedProtocol = parsed.protocol.endsWith(":")
+    ? parsed.protocol
+    : `${parsed.protocol}:`;
   return `${normalizedProtocol}//${parsed.host}${normalizedPath}${search}${parsed.hash}`;
 }
