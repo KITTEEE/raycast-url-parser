@@ -1,7 +1,6 @@
 import { Action, ActionPanel, Clipboard, Form, showHUD } from "@raycast/api";
 import { randomUUID } from "crypto";
 import { useEffect, useState } from "react";
-import { getStrings } from "./i18n";
 import {
   type Param,
   type ParsedUrl,
@@ -9,7 +8,27 @@ import {
   serialize,
 } from "./utils/url-parser";
 
-const t = getStrings();
+const t = {
+  urlLabel: "URL",
+  urlPlaceholder: "Paste or type a URL",
+  invalidUrl: "Invalid URL",
+  componentsSection: "URL Components",
+  protocolLabel: "Protocol",
+  hostLabel: "Host",
+  pathnameLabel: "Path",
+  hashLabel: "Hash",
+  paramsSection: "Query Parameters",
+  paramLabel: "Param",
+  paramPlaceholder: "key=value",
+  emptyKeyError: "Key cannot be empty",
+  generatedUrlLabel: "Generated URL",
+  copyAction: "Copy URL",
+  resetAction: "Reset",
+  addParamAction: "Add Parameter",
+  deleteParamAction: "Delete Parameter",
+  copiedToast: "URL copied to clipboard",
+  noParamsPlaceholder: "No query parameters",
+} as const;
 
 export default function ParseUrl() {
   const [rawUrl, setRawUrl] = useState("");

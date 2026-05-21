@@ -47,5 +47,9 @@ export function serialize(parsed: ParsedUrl): string {
   const normalizedProtocol = parsed.protocol.endsWith(":")
     ? parsed.protocol
     : `${parsed.protocol}:`;
-  return `${normalizedProtocol}//${parsed.host}${normalizedPath}${search}${parsed.hash}`;
+  const normalizedHash =
+    parsed.hash && !parsed.hash.startsWith("#")
+      ? `#${parsed.hash}`
+      : parsed.hash;
+  return `${normalizedProtocol}//${parsed.host}${normalizedPath}${search}${normalizedHash}`;
 }
