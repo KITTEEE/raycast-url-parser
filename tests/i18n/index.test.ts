@@ -32,4 +32,16 @@ describe("getStrings", () => {
     expect(s).toHaveProperty("copyAction");
     expect(s).toHaveProperty("invalidUrl");
   });
+
+  it("has paramLabel and paramPlaceholder for en-US", () => {
+    const s = getStrings("en-US");
+    expect(s.paramLabel).toBe("Param");
+    expect(s.paramPlaceholder).toBe("key=value");
+  });
+
+  it("has paramLabel and paramPlaceholder for zh-CN", () => {
+    const s = getStrings("zh-CN");
+    expect(s.paramLabel).toBe("Param");
+    expect(s.paramPlaceholder).toBe("key=value");
+  });
 });

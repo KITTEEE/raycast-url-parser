@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:npm.efun.com)",
+      "WebFetch(domain:registry.npmjs.org)"
+    ]
+  }
+}
