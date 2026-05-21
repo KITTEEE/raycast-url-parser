@@ -1,6 +1,6 @@
 import { Action, ActionPanel, Clipboard, Form, showHUD } from "@raycast/api";
 import { randomUUID } from "crypto";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getStrings } from "./i18n";
 import {
   type Param,
@@ -96,14 +96,11 @@ export default function ParseUrl() {
     rebuildUrl({ hash: value });
   }
 
-  function handleParamChange(
-    id: string,
-    field: "key" | "value",
-    value: string,
-  ) {
-    const updated = params.map((p) =>
-      p.id === id ? { ...p, [field]: value } : p,
-    );
+  function handleParamFieldChange(id: string, raw: string) {
+    const eqIndex = raw.indexOf("=");
+    const key = eqIndex === -1 ? raw : raw.slice(0, eqIndex);
+    const value = eqIndex === -1 ? "" : raw.slice(eqIndex + 1);
+    const updated = params.map((p) => (p.id === id ? { ...p, key, value } : p));
     setParams(updated);
     rebuildUrl({ params: updated });
   }
@@ -200,27 +197,27 @@ export default function ParseUrl() {
       <Form.Description title={t.paramsSection} text="" />
 
       {params.map((param) => (
-        <Fragment key={param.id}>
-          <Form.TextField
-            id={`param-key-${param.id}`}
-            title={t.paramKeyLabel}
-            value={param.key}
-            error={
-              param.key !== "" && !param.key.trim()
-                ? t.emptyKeyError
-                : undefined
-            }
-            onChange={(v) => handleParamChange(param.id, "key", v)}
-            onFocus={() => setFocusedParamId(param.id)}
-          />
-          <Form.TextField
-            id={`param-value-${param.id}`}
-            title={t.paramValueLabel}
-            value={param.value}
-            onChange={(v) => handleParamChange(param.id, "value", v)}
-            onFocus={() => setFocusedParamId(param.id)}
-          />
-        </Fragment>
+        <Form.TextField
+          key={param.id}
+          id={`param-${param.id}`}
+          title={t.paramLabel}
+          placeholder={t.paramPlaceholder}
+          value={
+            param.key === "" && param.value === ""
+              ? ""
+              : param.value !== ""
+                ? `${param.key}=${param.value}`
+                : param.key
+          }
+          error={
+            !param.key.trim() &&
+            (param.key.length > 0 || param.value.length > 0)
+              ? t.emptyKeyError
+              : undefined
+          }
+          onChange={(v) => handleParamFieldChange(param.id, v)}
+          onFocus={() => setFocusedParamId(param.id)}
+        />
       ))}
 
       {params.length === 0 && (
