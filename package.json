@@ -1,4 +1,5 @@
 {
+  "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "url-parser",
   "title": "URL Parser",
   "description": "Parse and edit URL components, then copy the result",
