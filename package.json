@@ -1,0 +1,37 @@
+{
+  "name": "url-parser",
+  "title": "URL Parser",
+  "description": "Parse and edit URL components, then copy the result",
+  "icon": "command-icon.png",
+  "author": "author",
+  "categories": ["Developer Tools"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "parse-url",
+      "title": "Parse URL",
+      "subtitle": "URL Parser",
+      "description": "Parse a URL into its components and reconstruct it",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.18"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.1.1",
+    "@types/node": "22.19.17",
+    "@types/react": "19.0.10",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish",
+    "test": "vitest run"
+  },
+  "packageManager": "pnpm@10.28.0"
+}
