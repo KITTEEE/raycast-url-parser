@@ -41,6 +41,8 @@ export function serialize(parsed: ParsedUrl): string {
       searchParams.append(param.key, param.value);
     }
   }
-  const search = searchParams.toString() ? `?${searchParams.toString()}` : "";
-  return `${parsed.protocol}//${parsed.host}${parsed.pathname}${search}${parsed.hash}`;
+  const normalizedPath = parsed.pathname || "/";
+  const queryString = searchParams.toString();
+  const search = queryString ? `?${queryString}` : "";
+  return `${parsed.protocol}//${parsed.host}${normalizedPath}${search}${parsed.hash}`;
 }

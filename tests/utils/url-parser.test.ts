@@ -150,4 +150,26 @@ describe("serialize", () => {
     });
     expect(url).toBe("http://localhost:3000/api?debug=true");
   });
+
+  it("defaults empty pathname to '/'", () => {
+    const url = serialize({
+      protocol: "https:",
+      host: "example.com",
+      pathname: "",
+      params: [{ id: "1", key: "q", value: "test" }],
+      hash: "",
+    });
+    expect(url).toBe("https://example.com/?q=test");
+  });
+});
+
+describe("round-trip", () => {
+  it("parse then serialize preserves the URL structure", () => {
+    const original = "https://api.example.com/search?q=hello+world&page=2#results";
+    const parsed = parse(original);
+    expect(parsed).not.toBeNull();
+    const result = serialize(parsed!);
+    // Note: URLSearchParams encodes space as + by default
+    expect(result).toBe("https://api.example.com/search?q=hello+world&page=2#results");
+  });
 });
