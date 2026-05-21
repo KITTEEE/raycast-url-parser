@@ -5,17 +5,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-pnpm dev          # Start Raycast development server (hot reload)
-pnpm build        # Production build via ray build
-pnpm lint         # ESLint via @raycast/eslint-config
-pnpm fix-lint     # ESLint with auto-fix
-pnpm test         # Run all tests with vitest
-pnpm publish      # Publish to Raycast store
+npm run dev          # Start Raycast development server (hot reload)
+npm run build        # Production build via ray build
+npm run lint         # ESLint via @raycast/eslint-config
+npm run fix-lint     # ESLint with auto-fix
+npm test             # Run all tests with vitest
+npm run publish      # Publish to Raycast store
 ```
 
 Run a single test file:
 ```bash
-pnpm vitest run tests/utils/url-parser.test.ts
+npx vitest run tests/utils/url-parser.test.ts
 ```
 
 ## Architecture

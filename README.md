@@ -36,18 +36,18 @@ Search for **URL Parser** in the Raycast Store, or install manually:
 ```bash
 git clone https://github.com/KITTEEE/raycast-url-parser.git
 cd raycast-url-parser
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
 ## Development
 
 ```bash
-pnpm dev        # start with hot reload
-pnpm build      # production build
-pnpm test       # run tests
-pnpm lint       # lint
-pnpm fix-lint   # lint with auto-fix
+npm run dev        # start with hot reload
+npm run build      # production build
+npm test           # run tests
+npm run lint       # lint
+npm run fix-lint   # lint with auto-fix
 ```
 
 ## License

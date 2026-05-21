@@ -3,8 +3,10 @@
   "title": "URL Parser",
   "description": "Parse and edit URL components, then copy the result",
   "icon": "command-icon.png",
-  "author": "author",
-  "categories": ["Developer Tools"],
+  "author": "kitteee",
+  "categories": [
+    "Developer Tools"
+  ],
   "license": "MIT",
   "commands": [
     {
@@ -32,6 +34,5 @@
     "lint": "ray lint",
     "publish": "npx @raycast/api@latest publish",
     "test": "vitest run"
-  },
-  "packageManager": "pnpm@10.28.0"
+  }
 }
