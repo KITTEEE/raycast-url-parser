@@ -23,18 +23,18 @@ A [Raycast](https://raycast.com) extension to parse, inspect, and edit URL compo
 
 ## Keyboard Shortcuts
 
-| Action | Shortcut |
-|---|---|
-| Copy URL | `⌘↩` |
-| Add parameter | `⌘N` |
-| Delete focused parameter | `⌘⇧⌫` |
+| Action                   | Shortcut |
+| ------------------------ | -------- |
+| Copy URL                 | `⌘↩`     |
+| Add parameter            | `⌘N`     |
+| Delete focused parameter | `⌘⇧⌫`    |
 
 ## Installation
 
 Search for **URL Parser** in the Raycast Store, or install manually:
 
 ```bash
-git clone https://github.com/your-username/raycast-url-parser
+git clone https://github.com/KITTEEE/raycast-url-parser.git
 cd raycast-url-parser
 pnpm install
 pnpm dev
