@@ -25,4 +25,11 @@ describe("getStrings", () => {
     expect(s.urlLabel).toBe("URL");
     expect(s.copyAction).toBe("Copy URL");
   });
+
+  it("auto-detects system locale when called with no argument", () => {
+    const s = getStrings();
+    expect(s).toHaveProperty("urlLabel");
+    expect(s).toHaveProperty("copyAction");
+    expect(s).toHaveProperty("invalidUrl");
+  });
 });

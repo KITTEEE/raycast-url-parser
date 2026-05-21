@@ -1,4 +1,6 @@
-export const zh = {
+import { en } from "./en";
+
+export const zh: typeof en = {
   urlLabel: "URL",
   urlPlaceholder: "粘贴或输入 URL",
   invalidUrl: "无效的 URL",
