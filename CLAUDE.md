@@ -30,9 +30,8 @@ This is a single-command Raycast extension. The command entry point is `src/pars
 
 **Key modules:**
 - `src/utils/url-parser.ts` — pure `parse()`/`serialize()` functions; no Raycast dependency. All business logic and the `ParsedUrl`/`Param` types live here.
-- `src/i18n/` — locale detection via `Intl.DateTimeFormat`. Supports `en` (default) and `zh`. `getStrings(locale?)` auto-detects system locale when called without arguments.
 - `src/parse-url.tsx` — all UI state and Raycast `Form` rendering. `focusedParamId` tracks which param row has focus so the delete action targets the right row.
 
-**Testing:** Vitest runs in Node environment (no browser/Raycast APIs). Tests cover `url-parser.ts` and `i18n/index.ts` only — UI logic in `parse-url.tsx` is untested (Raycast APIs are not mockable in Node).
+**Testing:** Vitest runs in Node environment (no browser/Raycast APIs). Tests cover `url-parser.ts` only — UI logic in `parse-url.tsx` is untested (Raycast APIs are not mockable in Node).
 
 **Encoding contract:** `parse()` decodes percent-encoded values (e.g. `%20` → space) via `URLSearchParams`. `serialize()` re-encodes via `URLSearchParams.toString()` (spaces → `+`). Round-trips are stable but may change encoding style (e.g. `%20` becomes `+`).

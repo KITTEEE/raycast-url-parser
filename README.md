@@ -11,7 +11,6 @@ A [Raycast](https://raycast.com) extension to parse, inspect, and edit URL compo
 - **Editable components** — modify any part of the URL and see the reconstructed result in real time
 - **Query parameter management** — add, edit, or delete individual params with stable focus tracking
 - **One-action copy** — copy the final URL to clipboard with `⌘↩`
-- **i18n** — English and Chinese UI, auto-detected from system locale
 
 ## Usage
 
