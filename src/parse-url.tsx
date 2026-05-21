@@ -2,7 +2,12 @@ import { Action, ActionPanel, Clipboard, Form, showHUD } from "@raycast/api";
 import { randomUUID } from "crypto";
 import { Fragment, useEffect, useState } from "react";
 import { getStrings } from "./i18n";
-import { type Param, type ParsedUrl, parse, serialize } from "./utils/url-parser";
+import {
+  type Param,
+  type ParsedUrl,
+  parse,
+  serialize,
+} from "./utils/url-parser";
 
 const t = getStrings();
 
@@ -18,11 +23,15 @@ export default function ParseUrl() {
   const [focusedParamId, setFocusedParamId] = useState<string | undefined>();
 
   useEffect(() => {
+    let cancelled = false;
     Clipboard.readText().then((text) => {
-      if (!text) return;
+      if (cancelled || !text) return;
       const result = parse(text);
       if (result) applyParsed(text, result);
     });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   function applyParsed(raw: string, result: ParsedUrl) {
@@ -87,8 +96,14 @@ export default function ParseUrl() {
     rebuildUrl({ hash: value });
   }
 
-  function handleParamChange(id: string, field: "key" | "value", value: string) {
-    const updated = params.map((p) => (p.id === id ? { ...p, [field]: value } : p));
+  function handleParamChange(
+    id: string,
+    field: "key" | "value",
+    value: string,
+  ) {
+    const updated = params.map((p) =>
+      p.id === id ? { ...p, [field]: value } : p,
+    );
     setParams(updated);
     rebuildUrl({ params: updated });
   }
@@ -190,7 +205,11 @@ export default function ParseUrl() {
             id={`param-key-${param.id}`}
             title={t.paramKeyLabel}
             value={param.key}
-            error={param.key !== "" && !param.key.trim() ? t.emptyKeyError : undefined}
+            error={
+              param.key !== "" && !param.key.trim()
+                ? t.emptyKeyError
+                : undefined
+            }
             onChange={(v) => handleParamChange(param.id, "key", v)}
             onFocus={() => setFocusedParamId(param.id)}
           />
@@ -209,7 +228,10 @@ export default function ParseUrl() {
       )}
 
       <Form.Separator />
-      <Form.Description title={t.generatedUrlLabel} text={generatedUrl || "—"} />
+      <Form.Description
+        title={t.generatedUrlLabel}
+        text={generatedUrl || "—"}
+      />
     </Form>
   );
 }
