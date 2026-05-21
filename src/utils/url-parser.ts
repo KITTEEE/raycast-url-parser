@@ -35,6 +35,7 @@ export function parse(rawUrl: string): ParsedUrl | null {
 }
 
 export function serialize(parsed: ParsedUrl): string {
+  if (!parsed.host) return "";
   const searchParams = new URLSearchParams();
   for (const param of parsed.params) {
     if (param.key.trim()) {
